@@ -35,6 +35,7 @@ extension CodingCodable : Codable {
     }
 }
 
+@propertyWrapper
 public struct CodingArrayCodable<T: NSObject&NSCoding> {
     public var wrappedValue: [T]
 
