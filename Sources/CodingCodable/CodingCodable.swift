@@ -3,12 +3,12 @@
 
 import Foundation
 
-public enum Error: Swift.Error {
+public enum Error: Swift.Error, Sendable {
     case unarchiveFailed
 }
 
 @propertyWrapper
-public struct CodingCodable<T: NSObject&NSCoding> {
+public struct CodingCodable<T: NSObject&NSCoding&Sendable>: Sendable {
     
     public var wrappedValue: T
 
@@ -36,7 +36,7 @@ extension CodingCodable : Codable {
 }
 
 @propertyWrapper
-public struct CodingArrayCodable<T: NSObject&NSCoding> {
+public struct CodingArrayCodable<T: NSObject&NSCoding&Sendable>: Sendable {
     public var wrappedValue: [T]
 
     public init(wrappedValue: [T]) {
